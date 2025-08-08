@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Selecionar Unidade - VitalCare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="unidade-page">
+  <div class="unidade-container">
+
+    <!-- Painel esquerdo (ilustrativo, curvo) -->
+    <div class="unidade-left">
+      <h1>Selecione a<br><span>Unidade</span></h1>
+      <p>Escolha a unidade de saúde onde você está atuando para visualizar os pacientes em espera.</p>
+    </div>
+
+    <!-- Painel direito (ações) -->
+    <div class="unidade-right">
+      <div class="top-bar">Bem-vindo, <strong>VitalCare!</strong></div>
+
+      <div class="selection-title">Escolha o tipo de unidade</div>
+      <!-- REMOVIDO o texto "UBS — UPA — Hospital" conforme pedido -->
+
+      <!-- somente os botões (sem texto adicional) -->
+      <div class="tipo-unidade" id="tipo-group">
+        <button class="tipo-btn" data-tipo="UBS">UBS</button>
+        <button class="tipo-btn" data-tipo="UPA">UPA</button>
+        <button class="tipo-btn" data-tipo="Hospital">Hospital</button>
+      </div>
+
+      <!-- Grid onde os cards serão renderizados -->
+      <div id="lista-unidades" class="card-lista" aria-live="polite"></div>
+
+      <!-- Painel de detalhes da unidade (mostra nome e quantidade aguardando) -->
+      <div id="unit-details" class="unit-details hidden" aria-live="polite">
+        <h3 id="unit-name">—</h3>
+        <p id="unit-info">Endereço • Telefone • Plantão</p>
+        <p><strong>Pacientes aguardando:</strong> <span id="unit-wait">0</span></p>
+        <button id="abrir-lista-btn" class="btn-abrir-lista">Abrir lista</button>
+      </div>
+
+      <!-- Lista de pacientes -->
+      <div id="pacientes-panel" class="pacientes-panel hidden" aria-live="polite">
+        <h3 id="pacientes-title">Pacientes aguardando</h3>
+        <ul id="pacientes" class="pacientes-list"></ul>
+        <button onclick="voltarUnidades()" class="secondary-action">Voltar às unidades</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="unidade.js"></script>
+</body>
+</html>

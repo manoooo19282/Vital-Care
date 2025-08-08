@@ -1,0 +1,224 @@
+/* ==========================================================
+   style.css - COMPLETO (Login + Seleção de Unidade)
+   Substitua totalmente o seu style.css por este.
+   ========================================================== */
+
+/* -----------------------------
+   IMPORT DE FONTE
+   ----------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
+
+/* -----------------------------
+   VARIÁVEIS GLOBAIS
+   ----------------------------- */
+:root{
+  --purple-700: #6b21a8;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --glass: rgba(255,255,255,0.96);
+  --shadow-1: rgba(2,6,23,0.06);
+  --shadow-2: rgba(2,6,23,0.12);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+  --max-width:1180px;
+  --gap:18px;
+}
+
+/* -----------------------------
+   RESET & BASE
+   ----------------------------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#0b1220;
+  background: linear-gradient(180deg,var(--purple-700),var(--blue-500));
+  line-height:1.45;
+}
+
+/* Links */
+a{ color:var(--blue-600); text-decoration:none }
+a:hover{ text-decoration:underline }
+
+/* Helpers */
+.hidden{ display:none !important; }
+.center-note{ text-align:center; color:var(--muted); padding:8px 0; }
+
+/* -----------------------------
+   LOGIN (mantido idêntico)
+   ----------------------------- */
+body.login-page{
+  background: linear-gradient(180deg,var(--blue-600),var(--blue-500));
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+}
+
+.login-container{
+  width:100%;
+  max-width:420px;
+  background: var(--glass);
+  border-radius:18px;
+  padding:28px;
+  box-shadow: 0 20px 40px var(--shadow-2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align:left;
+}
+.login-container:hover{ transform: translateY(-1px); transition: transform .18s; }
+
+/* logo area */
+.logo{ display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:8px; }
+.logo img{ width:84px; height:84px; object-fit:contain; border-radius:12px; background: linear-gradient(135deg,#fff,#f3f8ff); padding:10px; box-shadow: 0 8px 22px rgba(2,6,23,0.06); }
+.logo h1{ color:#1e40af; font-size:1.45rem; letter-spacing:0.2px; margin:0; }
+.logo p{ color:var(--muted); font-size:0.95rem; margin-top:4px; }
+
+/* form */
+.login-form{ display:flex; flex-direction:column; gap:12px; margin-top:10px; }
+.login-form label{ font-weight:600; color:#1f2937; font-size:0.92rem; }
+.login-form input[type="text"], .login-form input[type="password"], .login-form input[type="email"]{
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid #e6e9ef; background:#fff; font-size:1rem; outline:none;
+  transition: box-shadow .14s ease, border-color .14s ease;
+}
+.login-form input::placeholder{ color:#9aa3b2; }
+.login-form input:focus{ border-color:var(--blue-600); box-shadow: 0 8px 30px rgba(59,130,246,0.12); }
+
+/* primary */
+.primary-btn{ margin-top:6px; padding:12px 14px; border-radius:10px; border:none; background: linear-gradient(90deg,var(--blue-600),var(--blue-500)); color:#fff; font-weight:700; cursor:pointer; font-size:1rem; transition: transform .12s ease, box-shadow .12s; }
+.primary-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px rgba(2,6,23,0.12); }
+.forgot{ display:block; text-align:center; margin-top:8px; color:var(--blue-600); font-size:0.9rem; }
+.small-muted{ font-size:0.85rem; color:var(--muted); text-align:center; margin-top:10px; }
+
+/* -----------------------------
+   SELEÇÃO DE UNIDADE (novo visual roxo->azul claro)
+   ----------------------------- */
+body.unidade-page{
+  background: linear-gradient(180deg,#f0eff8,#f7fbff); /* página clara geral — cards fazem o contraste */
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:32px 18px;
+  font-family:"Inter", sans-serif;
+}
+
+/* container central */
+.unidade-container{ width: min(var(--max-width), 98%); display:flex; gap:var(--gap); align-items:stretch; justify-content:space-between; }
+
+/* LEFT (grande painel com curva e gradiente roxo->azul claro) */
+.unidade-left{
+  flex: 0 0 44%;
+  min-width:300px;
+  padding:48px 40px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background: linear-gradient(135deg,var(--purple-700),var(--blue-500));
+  color:#fff;
+  box-shadow: 0 18px 50px rgba(107,33,168,0.16);
+}
+/* curva decorativa direita */
+.unidade-left::after{ content:""; position:absolute; right:-80px; top:-10%; width:260px; height:120%; background: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.06), transparent 40%); transform: rotate(-8deg) skewX(-6deg); pointer-events:none; }
+.unidade-left h1{ font-family:"Montserrat",sans-serif; font-size:2.6rem; line-height:1; margin-bottom:12px; }
+.unidade-left p{ color: rgba(255,255,255,0.95); font-size:1.02rem; max-width:420px; }
+
+/* RIGHT (painel onde ficam botões e cards) */
+.unidade-right{ flex:1; background: linear-gradient(180deg,#f9fbff,#ffffff); padding:36px; border-radius:18px; box-shadow: 0 14px 36px rgba(13,21,60,0.06); position:relative; display:flex; flex-direction:column; }
+
+/* top bar com Bem-vindo no canto superior direito */
+.unidade-right .top-bar{ position:absolute; right:22px; top:18px; color:var(--blue-600); font-weight:700; font-size:0.95rem; }
+
+/* títulos */
+.selection-title{ font-family:"Montserrat",sans-serif; font-size:1.6rem; color:#101828; margin-bottom:6px; }
+.selection-subtitle{ color:var(--muted); margin-bottom:12px; }
+
+/* Botões UBS/UPA/Hospital — apenas eles (sem texto extra) */
+.tipo-unidade{ display:flex; gap:14px; margin-bottom:18px; flex-wrap:wrap; }
+.tipo-unidade .tipo-btn{
+  padding:12px 26px;
+  border-radius:999px;
+  border:none;
+  background: linear-gradient(90deg,var(--blue-600),var(--blue-500));
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 10px 26px rgba(59,130,246,0.12);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.tipo-unidade .tipo-btn:hover{ transform: translateY(-6px); box-shadow: 0 20px 45px rgba(59,130,246,0.14); }
+.tipo-unidade .tipo-btn.active{ box-shadow: 0 24px 60px rgba(59,130,246,0.22); transform: translateY(-8px); }
+
+/* GRID de cards */
+.card-lista{ display:grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap:16px; margin-top:12px; }
+
+/* card unidade */
+.card{ background: linear-gradient(180deg,#ffffff,#fbfdff); padding:14px; border-radius:14px; border:1px solid #eef6ff; box-shadow: 0 8px 18px rgba(13,21,60,0.04); transition: transform .14s ease, box-shadow .14s ease, background .14s ease; display:flex; flex-direction:column; gap:8px; }
+.card:hover{ transform: translateY(-8px); box-shadow: 0 26px 60px rgba(13,21,60,0.12); background: linear-gradient(180deg,#fbfdff,#f2f8ff); }
+.card h4{ margin:0; color:var(--blue-600); font-weight:700; font-size:1.02rem; }
+.card .upa-info{ font-size:0.9rem; color:#475569; }
+
+/* meta area: REMOVIDA a contagem nos cards — apenas botão Abrir lista */
+.card .meta{ display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-top:6px; }
+.card .meta .open-btn{ padding:8px 12px; border-radius:10px; border:none; background: linear-gradient(90deg,var(--blue-600),var(--blue-500)); color:white; font-weight:700; cursor:pointer; box-shadow: 0 8px 22px rgba(59,130,246,0.12); }
+.card .meta .open-btn:hover{ transform: translateY(-4px); }
+
+/* painel detalhes (aparece quando seleciona um card): mostra a quantidade de pessoas aguardando */
+.unit-details{ margin-top:18px; padding:16px; border-radius:12px; background: linear-gradient(180deg,#f6fbff,#eef7ff); border:1px solid #e6f2ff; box-shadow: inset 0 0 12px rgba(2,6,23,0.02); }
+.unit-details h3{ margin:0 0 6px 0; font-family:"Montserrat",sans-serif; font-size:1.05rem; color:#0b1220; }
+.unit-details p{ margin:6px 0; color:var(--muted); }
+.btn-abrir-lista{ margin-top:10px; padding:10px 14px; border-radius:10px; border:none; background: linear-gradient(90deg,var(--blue-600),var(--blue-500)); color:white; font-weight:700; cursor:pointer; box-shadow: 0 8px 22px rgba(59,130,246,0.12); }
+.btn-abrir-lista:hover{ transform: translateY(-4px); }
+
+/* painel pacientes */
+.pacientes-panel{ margin-top:18px; }
+.pacientes-panel h3{ font-family:"Montserrat",sans-serif; font-size:1.02rem; margin-bottom:10px; color:#0b1220; }
+.pacientes-list{ list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+.pacientes-list li{ padding:12px 14px; border-radius:12px; background: linear-gradient(180deg,#fff,#fbfdff); border:1px solid #eef4ff; box-shadow: 0 8px 20px rgba(2,6,23,0.03); display:flex; justify-content:space-between; gap:12px; transition: transform .12s ease; }
+.pacientes-list li:hover{ transform: translateY(-6px); box-shadow: 0 22px 48px rgba(2,6,23,0.06); }
+.pacientes-list .left{ display:flex; flex-direction:column; gap:6px; }
+.pacientes-list .name{ font-weight:700; color:#0b1220; }
+.pacientes-list .info{ font-size:0.88rem; color:var(--muted); }
+.badge-time{ display:inline-block; padding:8px 10px; border-radius:10px; background: linear-gradient(180deg,#f0f8ff,#e6f4ff); color:var(--blue-600); font-weight:700; }
+
+/* botão secundário voltar */
+.secondary-action{ margin-top:12px; display:inline-block; background:#fff; border:1px solid rgba(2,6,23,0.06); padding:10px 14px; border-radius:10px; cursor:pointer; color:var(--blue-600); font-weight:700; }
+
+/* -----------------------------
+   Responsividade
+   ----------------------------- */
+@media (max-width: 1100px){
+  .unidade-container{ gap:14px; width:96%; }
+  .unidade-left{ flex-basis:44%; padding:36px; min-width:280px; }
+  .unidade-right{ padding:28px; }
+  .unidade-left h1{ font-size:2.2rem; }
+}
+@media (max-width: 820px){
+  body.unidade-page{ padding:16px; }
+  .unidade-container{ flex-direction:column; align-items:stretch; }
+  .unidade-left, .unidade-right{ width:100%; }
+  .unidade-left{ border-radius:14px 14px 6px 6px; }
+  .card-lista{ grid-template-columns: 1fr; }
+  .tipo-unidade .tipo-btn{ width:100%; text-align:center; }
+}
+@media (max-width: 520px){
+  .login-container{ padding:20px; width:90%; }
+  .unidade-left{ padding:20px; }
+  .unidade-right{ padding:18px; }
+}
+
+/* reduced-motion */
+@media (prefers-reduced-motion: no-preference){
+  .tipo-unidade .tipo-btn, .card, .pacientes-list li, .primary-btn { will-change: transform; }
+}
+
+/* EOF */

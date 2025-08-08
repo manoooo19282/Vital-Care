@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VitalCare - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="logo">
+      <!-- Substitua logo.png pela sua logo -->
+      <img src="logo.png" alt="VitalCare logo" />
+      <h1>Vital Care</h1>
+      <p>Bem-vindo de volta, médico!</p>
+    </div>
+
+    <form id="loginForm" class="login-form">
+      <label for="crm">CRM</label>
+      <input id="crm" name="crm" type="text" placeholder="Digite seu CRM" required />
+
+      <label for="password">Senha</label>
+      <input id="password" name="password" type="password" placeholder="Digite sua senha" required />
+
+      <button type="submit" class="primary-btn">Entrar</button>
+      <a href="#" class="forgot">Esqueceu sua senha?</a>
+    </form>
+
+    <p class="small-muted">Teste: use qualquer CRM e senha — você será direcionado à seleção de unidade.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
