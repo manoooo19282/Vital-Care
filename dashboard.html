@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - VitalCare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <header>
+      <h1>Dashboard do Médico</h1>
+      <button id="logoutBtn" class="secondary-action">Sair</button>
+    </header>
+
+    <section class="dashboard-section">
+      <h2>Unidade Selecionada</h2>
+      <p id="selectedUnit">—</p>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>Pacientes na fila</h2>
+      <ul id="patientList" class="pacientes-list"></ul>
+      <ul id="patientList" class="pacientes-list" role="list" aria-live="polite"></ul>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>Alertas</h2>
+      <ul id="alertsList"></ul>
+      <ul id="alertsList" role="list" aria-live="polite"></ul>
+    </section>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atendimento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Atendimento do Paciente</h2>
+    <div id="dados-paciente" class="card">
+      <h3 id="paciente-nome"></h3>
+      <p><strong>Idade:</strong> <span id="paciente-idade"></span></p>
+      <p><strong>Motivo:</strong> <span id="paciente-motivo"></span></p>
+      <p><strong>Tempo de espera:</strong> <span id="paciente-tempo"></span></p>
+      <p><strong>Classificação de risco:</strong> 
+        <span id="paciente-risco" class="badge"></span>
+      </p>
+    </div>
+    <button onclick="voltar()">Voltar para fila</button>
+  </div>
+
+  <script src="atendimento.js"></script>
+</body>
+</html>
