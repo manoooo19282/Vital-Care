@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const tipo = btn.dataset.tipo;
       mostrarTipos(tipo);
+      
       // efeito visual de botão ativo
       document.querySelectorAll('.tipo-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -72,19 +73,31 @@ function mostrarTipos(tipo) {
     return;
   }
 
-  arr.forEach(u => {
+arr.forEach(u => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.setAttribute('tabindex', '0'); // deixa o card navegável pelo TAB
+
     card.innerHTML = `
       <h4>${u.name}</h4>
       <div class="upa-info">${u.address} • ${u.phone} • ${u.shift}</div>
       <div class="meta">
-        <button class="open-btn">Abrir lista</button>
+        <button class="open-btn" tabindex="0">Abrir lista</button>
       </div>
     `;
-    card.querySelector('.open-btn').addEventListener('click', () => selecionarUnidade(u));
+
+    const openBtn = card.querySelector('.open-btn');
+
+    // Clique normal
+    openBtn.addEventListener('click', () => selecionarUnidade(u));
+
+    // Pressionar ENTER também funciona
+    openBtn.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') selecionarUnidade(u);
+    });
+
     lista.appendChild(card);
-  });
+});
 
   lista.scrollIntoView({ behavior: 'smooth' });
 }
@@ -92,12 +105,11 @@ function mostrarTipos(tipo) {
 function selecionarUnidade(unidadeObj) {
   unidadeSelecionada = unidadeObj.name;
 
-  document.getElementById('unit-name').textContent = unidadeObj.name;
-  document.getElementById('unit-info').textContent = `${unidadeObj.address} • ${unidadeObj.phone} • ${unidadeObj.shift}`;
-  document.getElementById('unit-wait').textContent = unidadeObj.waiting || 0;
+  // salvar no sessionStorage para usar na dashboard
+  sessionStorage.setItem('vital_unidade', unidadeSelecionada);
 
-  document.getElementById('unit-details').classList.remove('hidden');
-  document.getElementById('unit-details').scrollIntoView({ behavior: 'smooth' });
+  // redireciona para dashboard do médico
+  window.location.href = 'dashboard.html';
 }
 
 function abrirLista() {
@@ -113,17 +125,29 @@ function abrirLista() {
   if (pacientes.length === 0) {
     ul.innerHTML = '<li class="center-note">Nenhum paciente aguardando.</li>';
   } else {
-    pacientes.forEach(p => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <div class="left">
-          <div class="name">${p.name} <span style="font-weight:400;color:#6b7280">• ${p.age} anos</span></div>
-          <div class="info">${p.reason}</div>
-        </div>
-        <div class="badge-time">${p.waitingTime}</div>
-      `;
-      ul.appendChild(li);
-    });
+    
+pacientes.forEach(p => {
+  const li = document.createElement('li');
+  li.innerHTML = `
+    <div class="left">
+      <div class="name">${p.name} <span style="font-weight:400;color:#6b7280">• ${p.age} anos</span></div>
+      <div class="info">${p.reason}</div>
+    </div>
+    <div class="badge-time">${p.waitingTime}</div>
+  `;
+
+  // exemplo: adicionar classificação de risco fixa por enquanto
+  p.risk = 'Amarelo'; // depois você muda para vir do seu cadastro automático
+
+  // clique no paciente -> abre tela atendimento
+  li.addEventListener('click', () => {
+    sessionStorage.setItem('vital_paciente', JSON.stringify(p));
+    window.location.href = 'atendimento.html';
+  });
+
+  ul.appendChild(li);
+});
+
   }
 
   document.getElementById('pacientes-title').textContent = `Pacientes aguardando em ${unidadeSelecionada}`;
@@ -134,4 +158,8 @@ function abrirLista() {
 function voltarUnidades() {
   document.getElementById('pacientes-panel').classList.add('hidden');
   // mantemos detalhes da unidade visível
+  function selecionarPaciente(paciente) {
+  alert(`Paciente: ${paciente.name}\nIdade: ${paciente.age}\nMotivo: ${paciente.reason}`);
+}
+
 }

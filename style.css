@@ -222,3 +222,204 @@ body.unidade-page{
 }
 
 /* EOF */
+
+body.dashboard-page {
+  background: linear-gradient(180deg, #f0f4ff, #e4ebff);
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  padding: 28px;
+  color: #0b1220;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #3b82f6;
+}
+
+.dashboard-section {
+  margin-bottom: 28px;
+}
+
+.dashboard-section h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #2563eb;
+}
+
+.pacientes-list, #alertsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pacientes-list li, #alertsList li {
+  padding: 12px 16px;
+  background: #f9fbff;
+  border: 1px solid #dbe9ff;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0b1220;
+}
+
+.pacientes-list li .left {
+  display: flex;
+  flex-direction: column;
+}
+
+.pacientes-list li .name {
+  font-weight: 700;
+}
+
+.badge-time {
+  background: linear-gradient(180deg, #e0f0ff, #b3d6ff);
+  color: #2563eb;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 4px 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.secondary-action {
+  cursor: pointer;
+  background: #f0f4ff;
+  border: 1px solid #a3bffa;
+  color: #2563eb;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.secondary-action:hover {
+  background: #dbe9ff;
+}
+
+/* Pacientes clicáveis */
+.pacientes-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pacientes-list li:hover {
+  background-color: #f3f4f6;
+}
+
+.pacientes-list .left .name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.pacientes-list .left .info {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.badge-time {
+  background-color: #2563eb;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+/* Bolinha de classificação de risco */
+.risk-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.risk-dot.vermelho { background-color: #e53935; }
+.risk-dot.laranja { background-color: #fb8c00; }
+.risk-dot.amarelo { background-color: #fdd835; }
+.risk-dot.verde { background-color: #43a047; }
+.risk-dot.azul { background-color: #1e88e5; }
+
+/* Ajuste da lista */
+.paciente-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+}
+/* Visually-hidden utility (para leitores de tela) */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* estilo do botão do paciente */
+.paciente-btn {
+  all: unset;                 /* remover estilos default para aplicar o nosso */
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding:10px 12px;
+  cursor:pointer;
+  border-radius:10px;
+  text-align:left;
+}
+
+/* foco bem visível */
+.paciente-btn:focus, .paciente-btn:hover {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+  background: linear-gradient(180deg,#fbfdff,#f2f8ff);
+}
+
+/* pequena margem para a bolinha de risco */
+.risk-dot { width: 14px; height: 14px; border-radius:50%; display:inline-block; margin-right:6px; flex:0 0 18px; }
+
+/* cores (reusar as que já passamos) */
+.risk-dot.vermelho { background-color: #e53935; }
+.risk-dot.laranja { background-color: #fb8c00; }
+.risk-dot.amarelo { background-color: #fdd835; }
+.risk-dot.verde { background-color: #43a047; }
+.risk-dot.azul { background-color: #1e88e5; }
+
+.muted { color:#6b7280; font-weight:400; }
+.card:focus,
+button:focus {
+  outline: 3px solid #4f46e5; /* cor azul arroxeada */
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+button:focus {
+  background-color: rgba(79, 70, 229, 0.1);
+}
